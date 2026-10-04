@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "tarotap": {
+      "type": "http",
+      "url": "https://tarotap.com/api/mcp/claude"
+    }
+  }
+}

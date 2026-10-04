@@ -1,0 +1,11 @@
+{
+  "name": "tarotap",
+  "displayName": "Tarotap",
+  "version": "1.0.0",
+  "description": "Tarot readings with real cards: Tarotap shuffles a full 78-card deck, you draw your own cards in the conversation, and Claude reads the spread against your question.",
+  "author": { "name": "Tarotap", "url": "https://tarotap.com/en" },
+  "homepage": "https://tarotap.com/en/blog/claude-tarot-reading-guide",
+  "repository": "https://github.com/tarotap/claude-plugin",
+  "license": "MIT",
+  "keywords": ["tarot", "tarot reading", "tarot spread", "card of the day"]
+}

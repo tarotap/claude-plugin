@@ -7,9 +7,12 @@
     "name": "Tarotap",
     "url": "https://tarotap.com/en"
   },
-  "homepage": "https://tarotap.com/en/blog/claude-tarot-reading-guide",
+  "homepage": "https://tarotap.com/en",
+  "documentationUrl": "https://tarotap.com/en/blog/claude-tarot-reading-guide",
+  "supportUrl": "https://tarotap.com/en/contact",
   "repository": "https://github.com/tarotap/claude-plugin",
   "privacyPolicyUrl": "https://tarotap.com/en/privacy-policy",
+  "termsOfServiceUrl": "https://tarotap.com/en/terms-of-service",
   "license": "MIT",
   "keywords": [
     "tarot",

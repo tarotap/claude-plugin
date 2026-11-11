@@ -1,7 +1,7 @@
 {
   "name": "tarotap",
   "displayName": "Tarotap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tarot readings with real cards: Tarotap shuffles a full 78-card deck, you draw your own cards in the conversation, and Claude reads the spread against your question.",
   "author": {
     "name": "Tarotap",

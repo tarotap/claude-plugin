@@ -7,8 +7,10 @@ description: Give a tarot reading with real cards the user draws by hand. Use wh
 
 Tarotap is a connector with two tools. `list_spreads` returns the available
 spreads. `draw_cards` shuffles a full 78-card Rider-Waite-Smith deck and opens
-a card table in the conversation, where the user picks their own cards. Use
-these tools for every reading. Never name or invent cards from memory.
+a card table in the conversation, where the user picks their own cards. Where
+the card table cannot be shown, `draw_cards` draws the cards itself and
+returns them in the result. Use these tools for every reading. Never name or
+invent cards from memory.
 
 If the Tarotap tools are not available, tell the user to open this plugin's
 Connectors tab, connect Tarotap (it needs no sign-in), and ask again.
@@ -24,11 +26,13 @@ needs no question.
 - The user named a spread: call `list_spreads`, find it, and use its `id`.
 - The user asked what spreads exist: call `list_spreads` and present the
   options with their number of cards and positions.
-- The user left it open: pick for them and say why in one sentence. Use
-  `time-flow` (past, present, future) for a general question, `two-choices`
-  for a decision between two options, `celtic-cross` when they ask for depth, and
-  a single card (`card_count: 1`) for a card of the day or a quick answer.
-  Check the ids against `list_spreads` before using one.
+- The user left it open: call `list_spreads` and choose the spread whose name
+  and tagline fit the question. Several spreads are made for one kind of
+  question, such as a lost item, a job search, whether someone will get in
+  touch, or a yes-or-no decision. Say why you chose it in one sentence. If none
+  fits, use `time-flow` (past, present, future) for a general question and
+  `celtic-cross` when they ask for depth. For a card of the day or a quick
+  answer, use a single card (`card_count: 1`).
 - The user asked for a number of cards without a spread: pass `card_count`
   (1 to 10).
 
@@ -42,20 +46,32 @@ position names and the card names match the conversation. Supported values:
 `uk`, `he`, `th`, `tr`, `pl`, `da`, `no`, `vi`, `hu`, `fi`, `id`. Use `en` for
 any other language.
 
-The tool result does not contain the cards. The deck is face down and the user
-has not drawn yet. Reply with one short sentence inviting them to draw, and
-stop there. Do not describe, guess or interpret any card.
+Check the `status` in the result.
+
+- `status: "face_down"`, or a result that says no cards have been drawn yet:
+  the result does not contain the cards. The deck is face down and the user
+  has not drawn yet. Reply with one short sentence inviting them to draw, and
+  stop there. Do not describe, guess or interpret any card. Then follow
+  section 4.
+- `status: "drawn"`, or a result that lists the drawn cards: no card table is
+  shown. The `cards` in the result are the draw, in position order. Each has a
+  `name`, a `reversed` flag and, except in a free-form draw, a `position`. Do
+  not ask the user to draw or to send anything. Go straight to section 5 and
+  read these cards.
 
 ## 4. Wait for the cards
 
-When the user has turned over the last card, the card table puts a message in
-their reply box that lists each position with its card, and marks reversed
-cards. The user sends it. That message is the only source of truth for what
-was drawn.
+After a `face_down` result, the user draws in the card table. When the user
+has turned over the last card, the card table puts a message in their reply
+box that lists each position with its card, and marks reversed cards. The user
+sends it.
+
+The only source of truth for what was drawn is that message after a
+`face_down` result, and the `cards` in the tool result after a `drawn` result.
 
 If the user writes again before that message arrives, ask them to finish
-drawing in the card table and send the message it prepares. Do not call
-`draw_cards` again for the same reading.
+drawing in the card table and send the message it prepares. In either case, do
+not call `draw_cards` again for the same reading.
 
 ## 5. Read the spread
 

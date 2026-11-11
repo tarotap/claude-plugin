@@ -33,9 +33,13 @@ The deck appears face down. Drag to browse it and tap the cards you want. When
 the last card is turned over, a message listing your cards appears in the
 reply box. Send it, and Claude reads the spread.
 
-There are 14 spreads, from a three-card past, present and future to the
-ten-card Celtic Cross, and you can ask for any number of cards from one to
-ten. Write in your own language and the card table follows.
+Where the card table cannot be shown, such as Claude Code in a terminal,
+Tarotap draws the cards itself and Claude reads them straight away.
+
+There are more than 20 spreads, from a three-card past, present and future to
+the ten-card Celtic Cross, and some are made for one kind of question, such as
+a job search or a lost item. You can also ask for any number of cards from one
+to ten. Write in your own language and the card table follows.
 
 The full guide is at https://tarotap.com/en/blog/claude-tarot-reading-guide
 
